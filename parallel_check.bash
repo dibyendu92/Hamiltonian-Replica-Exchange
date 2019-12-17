@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #A Demo bash script to prepare script for checking runs parallelly
+#Dont bother program would make this file for you
 
 current_folder=`pwd`
 
