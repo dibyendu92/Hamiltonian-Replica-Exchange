@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##This is a bash scirpt to run parallel jobs from the current working directory
-##Dont bother the program would make one for you
+##Dont bother, the program would make one for you
 
 current_path=`pwd`
 
