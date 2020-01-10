@@ -49,7 +49,7 @@ gen_map_file = 'gen_map.bash'
 mod_gap_file = 'mod_gap.py'
 mapping_file = 'map_ac.inp'
 
-python_scripts_path = '/home/dibyendu92/THROMBIN/python_scripts2/replica_copy'
+python_scripts_path = './replica_copy'
 required_files = [starting_rest_in, start_file_name, check_file_name, run_file_name, main_script, start_file, copy_for_next_run, copy_res, pdb_file, parallel_file4, parallel_file3, parallel_file2, parallel_file1, gen_map_file, mod_gap_file, mapping_file]
 
 #If these are changed, also change set_vdw and set_vdw_recharge functions
