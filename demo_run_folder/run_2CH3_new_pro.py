@@ -7,7 +7,7 @@ import os.path
 import time
 
 #Last updated 09/09/18
-# Code written by Jacob Florian and modified by Dibyendu Mondal
+#SCRIPT written by Jacob Florian and modified by Dibyendu Mondal
 # This script runs adiabatic charging calculations for ligands in thrombin protein
 # Example (rex): python run_rex_v5.py --replicas 11 --steps 2000 --swap 100 --serial 200 --type CF3 --decharge NO 
 # For serial run, set --swap 0 and --serial to the number of steps 
@@ -36,12 +36,12 @@ group = args.type
 start_file_name = '2zf0_ac_start.inp'
 check_file_name = '2zf0_ac_check.inp'
 run_file_name = '2zf0_ac_run.inp'
-starting_rest_in = 'ac_plus_4m.res'
-main_script = 'main_script_v4.py'
+starting_rest_in = 'ac_plus_3m.res'
+main_script = 'main_script_v1.py'
 start_file = 'start.bash'
 copy_for_next_run = 'copy_for_next_run.bash'
 copy_res = 'copy_res.bash'
-pdb_file = '2CH3_plus_4m.pdb'
+pdb_file = '2CH3_3ns_wat.pdb'
 parallel_file1 = 'parallel_run.bash'
 parallel_file2 = 'parallel_run_demo.bash'
 parallel_file3 = 'parallel_check.bash'
@@ -52,7 +52,8 @@ mapping_file = 'map_ac.inp'
 #proc_file = 'proc.py'
 
 python_scripts_path = '/home/dibyendu92/THROMBIN/python_scripts2/replica_copy'
-required_files = [starting_rest_in, start_file_name, check_file_name, run_file_name, main_script, start_file, copy_for_next_run, copy_res, pdb_file, parallel_file4, parallel_file3, parallel_file2, parallel_file1, gen_map_file, mod_gap_file, mapping_file]
+required_files = [start_file_name, check_file_name, run_file_name, main_script, start_file, copy_for_next_run, copy_res, pdb_file, parallel_file4, parallel_file3, parallel_file2, parallel_file1, gen_map_file, mod_gap_file, mapping_file]
+#required_files = [starting_rest_in, start_file_name, check_file_name, run_file_name, main_script, start_file, copy_for_next_run, copy_res, pdb_file, parallel_file4, parallel_file3, parallel_file2, parallel_file1, gen_map_file, mod_gap_file, mapping_file]
 
 #If these are changed, also change set_vdw and set_vdw_recharge functions
 reg1_atm = '4144 to 4149 4154 to 4154 4188 to 4191 4195 to 4200' 
@@ -260,8 +261,8 @@ line_num = get_line_number(run_file_name, 'nsteps')
 replace_line(run_file_name, line_num, '          nsteps ' + str(args.steps) + '\n')
 
 #UPDATE initial restart file in start file
-line_num = get_line_number(start_file_name, 'rest_in')
-replace_line(start_file_name, line_num, '    rest_in ' + starting_rest_in + '\n')
+#line_num = get_line_number(start_file_name, 'rest_in')
+#replace_line(start_file_name, line_num, '    rest_in ' + starting_rest_in + '\n')
 
 #UPDATE job_check_new with correct steps per replica
 os.chdir(python_scripts_path)
@@ -312,8 +313,8 @@ print('\n')
 #Make CH3_decharge directory and copy all files from main_dir
 
 if args.decharge == 'NO':
-        mkdir('CH3_decharge')
-        os.chdir('CH3_decharge')
+        mkdir('2CH3_decharge')
+        os.chdir('2CH3_decharge')
         cp_files_to_current_directory()
 
         #MODIFY INPUT FILES
@@ -339,7 +340,7 @@ else:
                 res_file_path = main_dir + '/2CH3_decharge/output/2zf0_ac_start' + file_prefix + replicas
         else: 
                 if len(replicas) == 1:
-                        out_fol_prefix = '/2H3_decharge/output/acrun_00' 
+                        out_fol_prefix = '/2CH3_decharge/output/acrun_00' 
                 elif len(replicas) == 2:
                         out_fol_prefix = '/2CH3_decharge/output/acrun_0' 
                 elif len(replicas) == 3:
