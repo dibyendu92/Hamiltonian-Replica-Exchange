@@ -1,0 +1,7 @@
+mapping_type ac
+include_ac_intra
+map_pf 21 1 2
+fileroot ./map_ac.gap 21
+points_throw 10 
+end
+

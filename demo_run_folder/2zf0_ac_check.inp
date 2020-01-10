@@ -1,0 +1,26 @@
+2CH3_plus_4m.pdb keeph
+ez
+  pre_enz
+#     ionres 199
+#     ionres 99
+  end
+  ac
+    reg1_res 259
+    map_lambda 1
+    map_pf 1 1 2
+    rest_in 2zf0_ac.res
+    rest_out 2zf0_ac.res
+    md_parm
+                temperature 300
+                stepsize    0.001
+                nsteps      0
+                water_r 18.0
+                region2a_r 18.0
+                langevin_r 20.0
+                
+                constraint_1 0.30
+                constraint_2 0.03
+    end
+   end
+end
+end   
