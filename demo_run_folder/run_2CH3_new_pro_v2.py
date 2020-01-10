@@ -21,7 +21,7 @@ parser.add_argument("--replicas", help="number of replica runs (not swaps)", typ
 parser.add_argument("--steps", help="number of steps per replica", type=int) #BETWEEN 10 AND 100000 STEPS; INCREMENTS OF 10
 parser.add_argument("--serial", help="number of steps per lambda increment in the serial run", type=int) 
 parser.add_argument("--swap", help="number of times replicas are swapped", type=int) #GREATER THAN 2
-parser.add_argument("--type",help="type of run: CH3, CF3, NH2, CL, CL2", type=str)
+parser.add_argument("--type",help="type of run: CH3, CF3, F, BR, H, CL, CL2", type=str)
 parser.add_argument("--decharge",help="Whether decharging step is already completed", type=str) # --decharge YES or NO
 
 
@@ -36,12 +36,12 @@ group = args.type
 start_file_name = '2zf0_ac_start.inp'
 check_file_name = '2zf0_ac_check.inp'
 run_file_name = '2zf0_ac_run.inp'
-starting_rest_in = 'ac_plus_3m.res'
-main_script = 'main_script_v4.py'
+starting_rest_in = 'ac_plus_4m.res'
+main_script = 'main_script_v1.py'
 start_file = 'start.bash'
 copy_for_next_run = 'copy_for_next_run.bash'
 copy_res = 'copy_res.bash'
-pdb_file = '2CH3_3ns_wat.pdb'
+pdb_file = '2CH3_plus_4m.pdb'
 parallel_file1 = 'parallel_run.bash'
 parallel_file2 = 'parallel_run_demo.bash'
 parallel_file3 = 'parallel_check.bash'
@@ -51,7 +51,7 @@ mod_gap_file = 'mod_gap.py'
 mapping_file = 'map_ac.inp'
 #proc_file = 'proc.py'
 
-python_scripts_path = '/home/dibyendu92/THROMBIN/python_scripts2/replica_copy'
+python_scripts_path = './replica_copy'
 required_files = [start_file_name, check_file_name, run_file_name, main_script, start_file, copy_for_next_run, copy_res, pdb_file, parallel_file4, parallel_file3, parallel_file2, parallel_file1, gen_map_file, mod_gap_file, mapping_file]
 #required_files = [starting_rest_in, start_file_name, check_file_name, run_file_name, main_script, start_file, copy_for_next_run, copy_res, pdb_file, parallel_file4, parallel_file3, parallel_file2, parallel_file1, gen_map_file, mod_gap_file, mapping_file]
 
